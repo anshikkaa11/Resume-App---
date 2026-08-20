@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Resume Analyzer</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(circle at top,
+                #172554,
+                #020617 65%);
+
+            color: white;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+        }
+
+        .container {
+
+            width: 90%;
+            max-width: 750px;
+
+            background: rgba(15, 23, 42, 0.85);
+
+            border: 1px solid rgba(255,255,255,0.1);
+
+            border-radius: 25px;
+
+            padding: 50px;
+
+            text-align: center;
+
+            box-shadow:
+                0 25px 80px rgba(0,0,0,0.5);
+
+        }
+
+        h1 {
+
+            font-size: 38px;
+
+            margin-bottom: 15px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #38bdf8,
+                    #a78bfa
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+        }
+
+        .subtitle {
+
+            color: #94a3b8;
+
+            margin-bottom: 40px;
+
+            font-size: 16px;
+
+        }
+
+        .upload-box {
+
+            border: 2px dashed #475569;
+
+            border-radius: 20px;
+
+            padding: 45px 20px;
+
+            margin-bottom: 30px;
+
+            transition: 0.3s;
+
+        }
+
+        .upload-box:hover {
+
+            border-color: #38bdf8;
+
+            background: rgba(56,189,248,0.05);
+
+        }
+
+        input[type="file"] {
+
+            margin: 20px;
+
+            color: white;
+
+        }
+
+        button {
+
+            border: none;
+
+            padding: 15px 35px;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #2563eb,
+                    #7c3aed
+                );
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+        button:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 30px rgba(59,130,246,0.3);
+
+        }
+
+        .features {
+
+            display: flex;
+
+            justify-content: space-around;
+
+            margin-top: 35px;
+
+            color: #cbd5e1;
+
+            font-size: 14px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>⚡ AI Resume Analyzer</h1>
+
+    <p class="subtitle">
+        Upload your resume and get an AI-powered
+        technical diagnostics report.
+    </p>
+
+    <form action="/analyze"
+          method="POST"
+          enctype="multipart/form-data">
+
+        <div class="upload-box">
+
+            <h2>📄 Upload Resume</h2>
+
+            <p style="margin-top:10px;color:#94a3b8;">
+                PDF, DOCX or TXT
+            </p>
+
+            <input
+                type="file"
+                name="resume"
+                accept=".pdf,.docx,.txt"
+                required
+            >
+
+        </div>
+
+        <button type="submit">
+            🚀 Analyze Resume
+        </button>
+
+    </form>
+
+    <div class="features">
+
+        <span>🤖 AI Analysis</span>
+
+        <span>📊 Skill Mapping</span>
+
+        <span>🎯 Job Matching</span>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

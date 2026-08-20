@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Recommended Companies</title>
+
+<style>
+
+* {
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family: Arial, sans-serif;
+
+}
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #172554,
+            #020617 70%
+        );
+
+    color: white;
+
+    padding: 40px;
+
+}
+
+.container {
+
+    max-width: 1250px;
+
+    margin: auto;
+
+}
+
+.header {
+
+    text-align: center;
+
+    margin-bottom: 40px;
+
+}
+
+.header h1 {
+
+    font-size: 35px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #a78bfa
+        );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+}
+
+.header p {
+
+    color: #94a3b8;
+
+    margin-top: 10px;
+
+}
+
+
+/* COMPANY GRID */
+
+.company-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+
+}
+
+
+/* CARD */
+
+.company-card {
+
+    background:
+        rgba(15,23,42,0.9);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    border-radius: 22px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    transition: 0.3s;
+
+}
+
+.company-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(96,165,250,0.5);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,0.35);
+
+}
+
+
+/* LOGO */
+
+.logo {
+
+    width: 85px;
+
+    height: 85px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 15px;
+
+    object-fit: contain;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+.logo:hover {
+
+    transform: scale(1.08);
+
+}
+
+
+/* COMPANY */
+
+.company-name {
+
+    font-size: 22px;
+
+    margin-top: 18px;
+
+}
+
+.role {
+
+    color: #94a3b8;
+
+    margin-top: 8px;
+
+}
+
+
+/* MATCH */
+
+.match {
+
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 7px 14px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(52,211,153,0.12);
+
+    color: #34d399;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+}
+
+
+/* DETAILS */
+
+.details {
+
+    margin-top: 20px;
+
+    text-align: left;
+
+    border-top:
+        1px solid rgba(255,255,255,0.08);
+
+    padding-top: 15px;
+
+}
+
+.details p {
+
+    margin: 9px 0;
+
+    color: #cbd5e1;
+
+    font-size: 14px;
+
+}
+
+
+/* SALARY */
+
+.salary {
+
+    color: #38bdf8;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+}
+
+
+/* BUTTON */
+
+.back {
+
+    display: block;
+
+    width: fit-content;
+
+    margin: 40px auto 0;
+
+    text-decoration: none;
+
+    color: white;
+
+    padding: 13px 25px;
+
+    border-radius: 10px;
+
+    background: #1e293b;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:900px) {
+
+    .company-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:600px) {
+
+    body {
+
+        padding: 15px;
+
+    }
+
+    .company-grid {
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+    <div class="header">
+
+        <h1>
+            🚀 Recommended Company Vacancies
+        </h1>
+
+        <p>
+            AI-powered company and role matching
+            based on your resume
+        </p>
+
+    </div>
+
+
+    <div class="company-grid">
+
+
+        {% for company in companies %}
+
+        <div class="company-card">
+
+
+            <!-- CLICKABLE LOGO -->
+
+            <img
+                src="{{ company.logo }}"
+                class="logo"
+                alt="{{ company.name }} Logo"
+                onclick="showCompany(
+                    '{{ company.name }}',
+                    '{{ company.role }}',
+                    '{{ company.salary }}',
+                    '{{ company.experience }}',
+                    '{{ company.skills }}'
+                )"
+            >
+
+
+            <div class="company-name">
+
+                {{ company.name }}
+
+            </div>
+
+
+            <div class="role">
+
+                {{ company.role }}
+
+            </div>
+
+
+            <div class="match">
+
+                {{ company.match }}% Resume Match
+
+            </div>
+
+
+            <div class="details">
+
+                <p>
+                    🎯 Role:
+                    {{ company.role }}
+                </p>
+
+                <p>
+                    💼 Experience:
+                    {{ company.experience }}
+                </p>
+
+                <p>
+                    🧠 Skills:
+                    {{ company.skills }}
+                </p>
+
+                <p class="salary">
+
+                    💰 Estimated:
+                    {{ company.salary }}
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+        {% endfor %}
+
+
+    </div>
+
+
+    <a href="/dashboard"
+       class="back">
+
+        ← Back to Dashboard
+
+    </a>
+
+
+</div>
+
+
+<script>
+
+function showCompany(
+    name,
+    role,
+    salary,
+    experience,
+    skills
+) {
+
+    alert(
+        "🏢 " + name +
+        "\n\n" +
+
+        "💼 Role: " + role +
+        "\n\n" +
+
+        "💰 Estimated Salary: " + salary +
+        "\n\n" +
+
+        "🎓 Experience: " + experience +
+        "\n\n" +
+
+        "🧠 Relevant Skills: " + skills
+    );
+
+}
+
+</script>
+
+</body>
+
+</html>
